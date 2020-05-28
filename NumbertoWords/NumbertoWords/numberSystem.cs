@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-
-namespace NumbertoWords
+﻿namespace NumbertoWords
 {
     /// <summary>
     /// This class is used to convert the Convert given number to Words in Indian System 
@@ -14,7 +9,7 @@ namespace NumbertoWords
     {
 
         // place holder to hold named constants from 1 to 19 Units Place
-        static string[] unit = {"", "one ", "two ", "three ", "four ",
+        static readonly string[] unit = {"", "one ", "two ", "three ", "four ",
                        "five ", "six ", "seven ", "eight ",
                        "nine ", "ten ", "eleven ", "twelve ",
                        "thirteen ", "fourteen ", "fifteen ",
@@ -22,12 +17,12 @@ namespace NumbertoWords
                        "nineteen "};
 
         // place holder to hold named constants from 20 to 90 Tens Place
-        static string[] tens = {"", "", "twenty ", "thirty ", "forty ",
+        static readonly string[] tens = {"", "", "twenty ", "thirty ", "forty ",
                        "fifty ", "sixty ", "seventy ", "eighty ",
                        "ninety "};
 
 
-        static string numToWords(int n, string s)
+        static string NumToWords(int n, string s)
         {
             string result = "";
 
@@ -51,7 +46,7 @@ namespace NumbertoWords
         }
 
         // Function to print a given number in words  
-        public static string convertToWords(long n)
+        public static string ConvertToWords(long n)
         {
             if (n == 0)
                 return "Zero";
@@ -61,19 +56,19 @@ namespace NumbertoWords
             string result = "";
 
             // handes Crores  places (if any)  
-            result += numToWords((int)(n / 10000000),
+            result += NumToWords((int)(n / 10000000),
                                           "crore ");
 
             // handles lakhs place  
-            result += numToWords((int)((n / 100000) % 100),
+            result += NumToWords((int)((n / 100000) % 100),
                                       "lakh ");
 
             // handles thousands places
-            result += numToWords((int)((n / 1000) % 100),
+            result += NumToWords((int)((n / 1000) % 100),
                                            "thousand ");
 
             // handles digit at hundreds places 
-            result += numToWords((int)((n / 100) % 10),
+            result += NumToWords((int)((n / 100) % 10),
                                           "hundred ");
 
             if (n > 100 && n % 100 > 0)
@@ -83,7 +78,7 @@ namespace NumbertoWords
 
             // handles digits at ones and tens  
             // places (if any)  
-            result += numToWords((int)(n % 100), "");
+            result += NumToWords((int)(n % 100), "");
             return result;
         }
     }
