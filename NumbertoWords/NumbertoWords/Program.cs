@@ -8,6 +8,7 @@ namespace NumbertoWords
         {
             Console.WriteLine(numberSystem.ConvertToWords(99));
             Console.WriteLine(numberSystem.ConvertToWords(0));
+            Console.WriteLine(numberSystem.ConvertToWords(-99));
             Console.WriteLine("Press any key to Exit..");
         }
     }

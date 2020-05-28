@@ -1,9 +1,12 @@
-﻿namespace NumbertoWords
+﻿using System;
+
+namespace NumbertoWords
 {
     /// <summary>
     /// This class is used to convert the Convert given number to Words in Indian System 
     /// I have made this class as public in order to make this accessible for Unit Testing if there is more 
     /// time we can  avoid this is made solely for demo purpose only
+
     /// </summary>
     public class numberSystem
     {
@@ -25,7 +28,13 @@
         static string NumToWords(int n, string s)
         {
             string result = "";
-
+            string finalresult = "";
+            Boolean isnegative = false;
+            if (n < 0)
+            {
+                isnegative = true;
+                n = -n;
+            }
             // if n is more than 19, divide it  
             if (n > 19)
             {
@@ -41,8 +50,16 @@
             {
                 result += s;
             }
-
-            return result;
+            if (isnegative)
+            {
+                finalresult = "Minus ";
+                finalresult += result;
+            }
+            else
+            {
+                finalresult = result;
+            }
+            return finalresult;
         }
 
         // Function to print a given number in words  
